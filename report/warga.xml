@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_cdn_warga_menu" string="Cdn - Warga"
+         model="cdn.warga" report_type="qweb-pdf" 
+         file="cdn.warga"  name="simpeldes.cdn_warga_report" />
+
+        <!-- document template -->
+        <template id="simpeldes.cdn_warga_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Warga: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nik</strong>
+                            <p class="m-0" t-field="doc.nik" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>No kk</strong>
+                            <p class="m-0" t-field="doc.no_kk" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Status keluarga</strong>
+                            <p class="m-0" t-field="doc.status_keluarga" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Jenis kel</strong>
+                            <p class="m-0" t-field="doc.jenis_kel" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tmp lahir</strong>
+                            <p class="m-0" t-field="doc.tmp_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tgl lahir</strong>
+                            <p class="m-0" t-field="doc.tgl_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Kewarganegaraan</strong>
+                            <p class="m-0" t-field="doc.kewarganegaraan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Gol darah</strong>
+                            <p class="m-0" t-field="doc.gol_darah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Bisa baca</strong>
+                            <p class="m-0" t-field="doc.bisa_baca" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Is cacat</strong>
+                            <p class="m-0" t-field="doc.is_cacat" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nama ayah</strong>
+                            <p class="m-0" t-field="doc.nama_ayah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nama ibu</strong>
+                            <p class="m-0" t-field="doc.nama_ibu" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Status kawin</strong>
+                            <p class="m-0" t-field="doc.status_kawin" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>No akte kawin</strong>
+                            <p class="m-0" t-field="doc.no_akte_kawin" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>No akte cerai</strong>
+                            <p class="m-0" t-field="doc.no_akte_cerai" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ada akte kawin</strong>
+                            <p class="m-0" t-field="doc.ada_akte_kawin" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ada akte cerai</strong>
+                            <p class="m-0" t-field="doc.ada_akte_cerai" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Status tmp tinggal</strong>
+                            <p class="m-0" t-field="doc.status_tmp_tinggal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Pendidikan</strong>
+                            <p class="m-0" t-field="doc.pendidikan_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Pekerjaan</strong>
+                            <p class="m-0" t-field="doc.pekerjaan_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Suku</strong>
+                            <p class="m-0" t-field="doc.suku_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Hobi</strong>
+                            <p class="m-0" t-field="doc.hobi_ids"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ref data</strong>
+                            <p class="m-0" t-field="doc.ref_data_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="simpeldes.cdn_warga_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="simpeldes.cdn_warga_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

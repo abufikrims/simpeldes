@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_cdn_hobi_menu" string="Cdn - Hobi"
+         model="cdn.hobi" report_type="qweb-pdf" 
+         file="cdn.hobi"  name="simpeldes.cdn_hobi_report" />
+
+        <!-- document template -->
+        <template id="simpeldes.cdn_hobi_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Hobi: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Keterangan</strong>
+                            <p class="m-0" t-field="doc.keterangan" />
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+                <h2>Warga</h2>
+                <table class="table table-sm o_main_table" name="warga_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Nik</td>
+                            <td>No kk</td>
+                            <td>Status keluarga</td>
+                            <td>Jenis kel</td>
+                            <td>Tmp lahir</td>
+                            <td>Tgl lahir</td>
+                            <td>Kewarganegaraan</td>
+                            <td>Gol darah</td>
+                            <td>Bisa baca</td>
+                            <td>Is cacat</td>
+                            <td>Nama ayah</td>
+                            <td>Nama ibu</td>
+                            <td>Status kawin</td>
+                            <td>No akte kawin</td>
+                            <td>No akte cerai</td>
+                            <td>Ada akte kawin</td>
+                            <td>Ada akte cerai</td>
+                            <td>Status tmp tinggal</td>
+                            <td>Pendidikan</td>
+                            <td>Pekerjaan</td>
+                            <td>Suku</td>
+                            <td>Hobi</td>
+                            <td>Ref data</td>
+                        </tr>
+                    </thead>
+                    <tbody class="warga_ids_tbody">
+                        <tr t-foreach="doc.warga_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.nik" /></td>
+                            <td><span t-field="line.no_kk" /></td>
+                            <td><span t-field="line.status_keluarga" /></td>
+                            <td><span t-field="line.jenis_kel" /></td>
+                            <td><span t-field="line.tmp_lahir" /></td>
+                            <td><span t-field="line.tgl_lahir" /></td>
+                            <td><span t-field="line.kewarganegaraan" /></td>
+                            <td><span t-field="line.gol_darah" /></td>
+                            <td><span t-field="line.bisa_baca" /></td>
+                            <td><span t-field="line.is_cacat" /></td>
+                            <td><span t-field="line.nama_ayah" /></td>
+                            <td><span t-field="line.nama_ibu" /></td>
+                            <td><span t-field="line.status_kawin" /></td>
+                            <td><span t-field="line.no_akte_kawin" /></td>
+                            <td><span t-field="line.no_akte_cerai" /></td>
+                            <td><span t-field="line.ada_akte_kawin" /></td>
+                            <td><span t-field="line.ada_akte_cerai" /></td>
+                            <td><span t-field="line.status_tmp_tinggal" /></td>
+                            <td><span t-field="line.pendidikan_id" /></td>
+                            <td><span t-field="line.pekerjaan_id" /></td>
+                            <td><span t-field="line.suku_id" /></td>
+                            <td><span t-field="line.hobi_ids" /></td>
+                            <td><span t-field="line.ref_data_id" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="simpeldes.cdn_hobi_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="simpeldes.cdn_hobi_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

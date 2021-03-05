@@ -1,0 +1,17 @@
+<odoo>
+	<data>
+		<record model="ir.module.category" id="module_category_simpeldes">
+			<field name="name">simpeldes</field>
+			<field name="description">simpeldes Groups</field>
+			<field name="sequence">10</field>
+		</record>
+		<record id="group_simpeldes_user" model="res.groups">
+			<field name="name">User</field>
+			<field name="category_id" ref="module_category_simpeldes"/>
+		</record>
+		<record id="group_simpeldes_manager" model="res.groups">
+			<field name="name">Manager</field>
+			<field name="category_id" ref="module_category_simpeldes"/>
+		</record>
+	</data>
+</odoo>
