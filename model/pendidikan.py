@@ -21,6 +21,7 @@ class nonformal_pendidikan(models.Model):
     name            = fields.Char(string='Pendidikan/Kursus')
     lembaga         = fields.Char(string='Lembaga Penyelenggara')
     tahun_lulus     = fields.Char(string='Tahun Lulus')
+    kota            = fields.Char(string='Kota')
     sertifikat      = fields.Boolean(string='Sertifikat?')
 
     warga_id        = fields.Many2one(comodel_name='cdn.warga', string='Nama Warga')

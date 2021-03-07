@@ -36,7 +36,7 @@
                                 <!--field name="detail_ids" invisible="1"/-->
                             <!--/button-->
                         </div>
-                        <div class="oe_title" colspan="6">
+                        <div class="oe_title" col="6" colspan="2">
                             <label for="name" class="oe_edit_only" string="Nama Lengkap"/>
                             <h1><field name="name" required="1" invisible="1"/></h1>
                             <h1><field name="nama" required="1" /></h1>
@@ -104,6 +104,15 @@
                                     </field>
                                 </group>
                                 <group string="Pendidikan Non Formal">
+                                    <field name="pendidikan_nonformal_ids" nolabel="1" widget="one2many_list">
+                                        <tree string="" editable="top">
+                                            <field name="name"/>
+                                            <field name="lembaga"/>
+                                            <field name="tahun_lulus"/>
+                                            <field name="kota"/>
+                                            <field name="sertifikat"/>
+                                        </tree>
+                                    </field>
                                 </group>
                             </page>
 

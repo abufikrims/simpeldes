@@ -14,9 +14,7 @@ class warga(models.Model):
     nama = fields.Char( required=True, string="Nama",  help="Nama Lengkap Warga")
     partner_id = fields.Many2one("res.partner", string='Partner ID', required=True, ondelete="cascade")
     
-    #new_field = fields.Selection(string='', selection=[('', ''), ('', ''),])
-
-    # Tambahan data alamat
+    # Tambahan data alamat - untuk melengkapi res.partner (street, street2, city, state, zip)
     rt_rw           = fields.Char(string="RT/RW")
     propinsi_id     = fields.Many2one(comodel_name='ref.propinsi', string='Propinsi')
     kota_id         = fields.Many2one(comodel_name='ref.kota', string='Kabupaten/Kota')
@@ -24,7 +22,7 @@ class warga(models.Model):
     desa_id         = fields.Many2one(comodel_name='ref.desa', string='Desa/Kelurahan')
     
     
-    nik             = fields.Char( string="NIK",  help="Nomor Induk Keluarga sesuai KTP/KK")
+    nik             = fields.Char( string="NIK", required=True,  help="Nomor Induk Keluarga sesuai KTP/KK")
     no_kk           = fields.Char( string="No Kartu Keluarga",  help="Nomor Kartu Keluarga")
     status_keluarga = fields.Selection(selection=[('kepala keluarga','Kepala Keluarga'),('suami','Suami'),('istri','Istri'),('anak','Anak'),('menantu','Menantu'),('cucu','Cucu'),('lainnya','Lainnya')],  string="Status Keluarga",  help="")
     jenis_kel       = fields.Selection(selection=[('pria','Pria'),('wanita','Wanita')],  string="Jenis Kelamin",  help="")
