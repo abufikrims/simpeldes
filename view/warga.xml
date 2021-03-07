@@ -10,29 +10,12 @@
             <field name="arch" type="xml">
                 <tree string="Warga">
                     <field name="name" />
-                    <field name="nik" />
-                    <field name="no_kk" />
-                    <field name="status_keluarga" />
-                    <field name="jenis_kel" />
-                    <field name="tmp_lahir" />
-                    <field name="tgl_lahir" />
-                    <field name="kewarganegaraan" />
-                    <field name="gol_darah" />
-                    <field name="bisa_baca" />
-                    <field name="is_cacat" />
-                    <field name="nama_ayah" />
-                    <field name="nama_ibu" />
-                    <field name="status_kawin" />
-                    <field name="no_akte_kawin" />
-                    <field name="no_akte_cerai" />
-                    <field name="ada_akte_kawin" />
-                    <field name="ada_akte_cerai" />
-                    <field name="status_tmp_tinggal" />
+                    <field name="nik"/>
+                    <field name="street" />
+                    <field name="rt_rw" />
+                    <field name="desa_id" />
                     <field name="pendidikan_id" />
-                    <field name="pekerjaan_id" />
-                    <field name="suku_id" />
-                    <field name="ref_data_id" />
-                    
+                    <field name="pekerjaan_id" />                   
                 </tree>
             </field>
         </record>
@@ -61,35 +44,60 @@
                         <group>
                             <field name="partner_id" placeholder="Partner" required="0" readonly="1"/>
                         </group>
-                        <group>
-                            <field name="nik" />
+                        <group string="Data Utama" col="4" colspan="4">
+                            <field name="nik" />    
                             <field name="no_kk" />
                             <field name="status_keluarga" />
-                        </group>    
-                        <group>
                             <field name="jenis_kel" />
                             <field name="tmp_lahir" />
                             <field name="tgl_lahir" />
+                            <field name="agama"/>
                             <field name="kewarganegaraan" />
-                            <field name="gol_darah" />
-                            <field name="bisa_baca" />
-                            <field name="is_cacat" />
-                            <field name="nama_ayah" />
-                            <field name="nama_ibu" />
-                            <field name="status_kawin" />
-                            <field name="no_akte_kawin" />
-                            <field name="no_akte_cerai" />
-                            <field name="ada_akte_kawin" />
-                            <field name="ada_akte_cerai" />
-                            <field name="status_tmp_tinggal" />
-                            <field name="pendidikan_id" />
-                            <field name="pekerjaan_id" />
-                            <field name="suku_id" />
-                            <field name="ref_data_id" />
-                            <field name="hobi_ids" widget="many2many_tags"/>
-                        
                         </group>
+                        <group string="Data Tempat Tinggal" col="2" colspan="4">
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="rt_rw"/>
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="propinsi_id"/>
+                            <field name="kota_id" domain="[('propinsi_id','=',propinsi_id)]"/>
+                            <field name="kecamatan_id" domain="[('kota_id','=',kota_id)]"/>
+                            <field name="desa_id" domain="[('kecamatan_id','=',kecamatan_id)]"/>
+                            <field name="city" invisible="1"/>
+
+                        </group>
+                        
                         <notebook>
+                            <page name="data_pribadi" string="string">
+                                <group string=" Data Lainnya" col="4" colspan="4">
+                                    <field name="gol_darah" />
+                                    <field name="bisa_baca" />
+                                    <field name="is_cacat" />
+                                    <field name="nama_ayah" />
+                                    <field name="nama_ibu" />
+                                    <field name="status_kawin" />
+                                    <field name="no_akte_kawin" />
+                                    <field name="no_akte_cerai" />
+                                    <field name="ada_akte_kawin" />
+                                    <field name="ada_akte_cerai" />
+                                    <field name="status_tmp_tinggal" />
+                                    
+                                    <field name="suku_id" />
+                                    <field name="ref_data_id" />
+                                </group>
+                                <group string="Pendidikan, Pekerjaan, Hobi" col="4" colspan="4">
+                                    <field name="pendidikan_id" />
+                                    <field name="pekerjaan_id" />
+                                    <field name="hobi_ids" widget="many2many_tags"/>
+                                </group>    
+                            </page>
+                            <page name="pendidikan" string="Pendidikan">
+                                <group string="Pendidikan Formal">
+                                </group>
+
+                                
+                            </page>
                         </notebook>
                     </sheet>
                 </form>

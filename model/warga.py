@@ -15,6 +15,14 @@ class warga(models.Model):
     partner_id = fields.Many2one("res.partner", string='Partner ID', required=True, ondelete="cascade")
     
     #new_field = fields.Selection(string='', selection=[('', ''), ('', ''),])
+
+    # Tambahan data alamat
+    rt_rw           = fields.Char(string="RT/RW")
+    propinsi_id     = fields.Many2one(comodel_name='ref.propinsi', string='Propinsi')
+    kota_id         = fields.Many2one(comodel_name='ref.kota', string='Kabupaten/Kota')
+    kecamatan_id    = fields.Many2one(comodel_name='ref.kecamatan', string='Kecamatan')
+    desa_id         = fields.Many2one(comodel_name='ref.desa', string='Desa/Kelurahan')
+    
     
     nik             = fields.Char( string="NIK",  help="Nomor Induk Keluarga sesuai KTP/KK")
     no_kk           = fields.Char( string="No Kartu Keluarga",  help="Nomor Kartu Keluarga")
@@ -22,6 +30,7 @@ class warga(models.Model):
     jenis_kel       = fields.Selection(selection=[('pria','Pria'),('wanita','Wanita')],  string="Jenis Kelamin",  help="")
     tmp_lahir       = fields.Char( string="Tempat Lahir",  help="Isikan dengan kota tempat kelahiran")
     tgl_lahir       = fields.Date( string="Tanggal Lahir",  help="Isikan dengan tanggal kelahiran")
+    agama           = fields.Selection([('islam', 'Islam'), ('katolik', 'Katolik'), ('protestan', 'Protestan'), ('hindu', 'Hindu'), ('budha', 'Budha'),('konghucu','KongHu Chu')], 'Agama', default='islam')
     kewarganegaraan = fields.Selection(selection=[('wni','WNI'),('wna','WNA')],  string="Kewarganegaraan",  help="Kewarganegaraan")
     gol_darah       = fields.Selection(selection=[('A','A'),('B','B'),('AB','AB'),('O','O'),('A+','A+'),('B+','B+'),('AB+','AB+'),('O+','O+'),('Tidak Tahu','TIDAK TAHU')],  string="Golongan Darah",  help="Isikan dengan golongan darah atau TIDAK TAHU jika Anda belum pernah periksa")
     bisa_baca       = fields.Boolean( string="Bisa Membaca ?",  help="")
@@ -42,7 +51,15 @@ class warga(models.Model):
     hobi_ids        = fields.Many2many(comodel_name="cdn.hobi",  string="Hobi",  help="")
     ref_data_id     = fields.Many2one(comodel_name="cdn.ref_data",  string="Ref data",  help="")
 
+    # Riwayat Pendidikan
+    riwayat_pendidikan_ids = fields.One2many(comodel_name='riwayat.pendidikan', inverse_name='warga_id', string='Riwayat Pendidikan')
+    
+
     @api.onchange('nama')
     def _onchange_nama(self):
         self.name = self.nama
+
+    @api.onchange('kota_id')
+    def _onchange_kota_id(self):
+        self.city = self.kota_id.name
         
