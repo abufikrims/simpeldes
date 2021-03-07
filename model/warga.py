@@ -52,7 +52,8 @@ class warga(models.Model):
     ref_data_id     = fields.Many2one(comodel_name="cdn.ref_data",  string="Ref data",  help="")
 
     # Riwayat Pendidikan
-    riwayat_pendidikan_ids = fields.One2many(comodel_name='riwayat.pendidikan', inverse_name='warga_id', string='Riwayat Pendidikan')
+    riwayat_pendidikan_ids      = fields.One2many(comodel_name='riwayat.pendidikan', inverse_name='warga_id', string='Riwayat Pendidikan')
+    pendidikan_nonformal_ids    = fields.One2many(comodel_name='nonformal.pendidikan', inverse_name='warga_id', string='Pendidikan Non Formal')
     
 
     @api.onchange('nama')

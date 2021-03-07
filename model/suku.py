@@ -10,6 +10,6 @@ class suku(models.Model):
 
     name        = fields.Char( required=True, string="Name",  help="")
     keterangan  = fields.Char( string="Keterangan",  help="")
-    active      = fields.Boolean( string="Active",  help="")
+    active      = fields.Boolean( string="Active",  help="", default=True)
 
 

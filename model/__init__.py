@@ -6,3 +6,4 @@ from . import suku
 from . import hobi
 from . import lahan_warga
 from . import ref_data
+from . import riwayat_pendidikan

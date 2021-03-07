@@ -69,7 +69,7 @@
                         </group>
                         
                         <notebook>
-                            <page name="data_pribadi" string="string">
+                            <page name="data_pribadi" string="Data Pribadi">
                                 <group string=" Data Lainnya" col="4" colspan="4">
                                     <field name="gol_darah" />
                                     <field name="bisa_baca" />
@@ -94,10 +94,19 @@
                             </page>
                             <page name="pendidikan" string="Pendidikan">
                                 <group string="Pendidikan Formal">
+                                    <field name="riwayat_pendidikan_ids" nolabel="1" widget="one2many_list">
+                                        <tree string="" editable="top">
+                                            <field name="pendidikan_id"/>
+                                            <field name="name"/>
+                                            <field name="tahun_lulus"/>
+                                            <field name="jurusan"/>
+                                        </tree>
+                                    </field>
                                 </group>
-
-                                
+                                <group string="Pendidikan Non Formal">
+                                </group>
                             </page>
+
                         </notebook>
                     </sheet>
                 </form>
