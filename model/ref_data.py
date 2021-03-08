@@ -62,5 +62,14 @@ class desa(models.Model):
 
     kecamatan_id    = fields.Many2one(comodel_name="ref.kecamatan",  string="Kecamatan",  help="")
 
+class ref_penyakit(models.Model):
+    _name           = "ref.penyakit"
+    _description    = "Referensi Data Penyakit"
+
+    name            = fields.Char( required=True, string="Name",  help="")
+    kategori        = fields.Selection(string='Kategori', selection=[('ringan', 'Ringan'), ('sedang', 'Sedang'),('berat', 'Berat'),('menular', 'Menular'),])
+    
+    keterangan      = fields.Char( string="Keterangan",  help="")
+    active          = fields.Boolean( string="Active", default=True,  help="")
 
 

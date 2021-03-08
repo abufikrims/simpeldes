@@ -115,6 +115,27 @@
                                     </field>
                                 </group>
                             </page>
+                            <page name="pekerjaan" string="Pekerjaan">
+                                
+                            </page>
+                            <page name="kesehatan" string="Kesehatan">
+                                <group string="Riwayat Sakit Diderita">
+                                    <field name="riwayat_sakit_ids" nolabel="1" widget="one2many_list">
+                                        <tree string="" editable="top">
+                                            <field name="penyakit_id"/>
+                                            <field name="tahun_sakit"/>
+                                            <field name="lama_sakit"/>
+                                            <field name="dirawat"/>
+                                            <field name="keterangan"/>
+                                        </tree>
+                                    </field>
+                                </group>
+
+                                
+                            </page>
+                            <page name="kepemilikan" string="Kepemilikan">
+                                
+                            </page>
 
                         </notebook>
                     </sheet>

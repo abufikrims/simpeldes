@@ -12,6 +12,7 @@
 		<record id="group_simpeldes_manager" model="res.groups">
 			<field name="name">Manager</field>
 			<field name="category_id" ref="module_category_simpeldes"/>
+        	<field name="users" eval="[(4, ref('base.user_admin'))]"/>
 		</record>
 	</data>
 </odoo>

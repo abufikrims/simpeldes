@@ -52,6 +52,14 @@ class warga(models.Model):
     # Riwayat Pendidikan
     riwayat_pendidikan_ids      = fields.One2many(comodel_name='riwayat.pendidikan', inverse_name='warga_id', string='Riwayat Pendidikan')
     pendidikan_nonformal_ids    = fields.One2many(comodel_name='nonformal.pendidikan', inverse_name='warga_id', string='Pendidikan Non Formal')
+
+    # Data Kesehatan
+    peserta_kb      = fields.Boolean(string='Peserta KB')
+    jenis_kb        = fields.Selection(string='Program KB', selection=[('iud', 'IUD'), ('pil', 'PIL KB'),('kondom', 'KONDOM'),('suntik', 'SUNTIK'),('implan', 'IMPLAN'),('tubektomi', 'TUBEKTOMI/VASEKTOMI'),('lainnya', 'LAINNYA'),])
+    riwayat_sakit_ids   = fields.One2many(comodel_name='riwayat.sakit', inverse_name='warga_id', string='Riwayat Pendidikan')
+    
+    
+
     
 
     @api.onchange('nama')
