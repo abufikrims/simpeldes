@@ -595,10 +595,10 @@
         </record>
 
 
-        <menuitem id="menu_cdn_ref_data" name="Ref data" parent="simpeldes_config_menu" action="action_cdn_ref_data" sequence="80"/>
-        <menuitem id="menu_cdn_ref_propinsi" name="Ref Propinsi" parent="simpeldes_config_menu" action="action_ref_propinsi" sequence="82"/>
-        <menuitem id="menu_cdn_ref_kota" name="Ref Kabupaten/Kota" parent="simpeldes_config_menu" action="action_ref_kota" sequence="83"/>
-        <menuitem id="menu_cdn_ref_kecamatan" name="Ref Kecamatan" parent="simpeldes_config_menu" action="action_ref_kecamatan" sequence="84"/>
-        <menuitem id="menu_cdn_ref_desa" name="Ref Desa/Kelurahan" parent="simpeldes_config_menu" action="action_ref_desa" sequence="85"/>
+        <menuitem id="menu_cdn_ref_data" name="Ref Data Wilayah" parent="simpeldes_config_menu"  sequence="80"/>
+        <menuitem id="menu_cdn_ref_propinsi" name="Ref Propinsi" parent="menu_cdn_ref_data" action="action_ref_propinsi" sequence="10"/>
+        <menuitem id="menu_cdn_ref_kota" name="Ref Kabupaten/Kota" parent="menu_cdn_ref_data" action="action_ref_kota" sequence="20"/>
+        <menuitem id="menu_cdn_ref_kecamatan" name="Ref Kecamatan" parent="menu_cdn_ref_data" action="action_ref_kecamatan" sequence="30"/>
+        <menuitem id="menu_cdn_ref_desa" name="Ref Desa/Kelurahan" parent="menu_cdn_ref_data" action="action_ref_desa" sequence="40"/>
     </data>
 </odoo>
