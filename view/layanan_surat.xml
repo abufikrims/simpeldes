@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_cdn_layanan_surat_tree" model="ir.ui.view">
+            <field name="name">cdn_layanan_surat_tree</field>
+            <field name="model">cdn.layanan_surat</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Layanan surat">
+                    <field name="name" />
+                    <field name="sr_nik" />
+                    <field name="sr_tmp_lahir" />
+                    <field name="sr_tgl_lahir" />
+                </tree>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_cdn_layanan_surat_form" model="ir.ui.view">
+            <field name="name">cdn_layanan_surat_form</field>
+            <field name="model">cdn.layanan_surat</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Layanan surat">
+                    <header>
+                        <button string="Confirm" type="object" name="action_confirm" states="draft" />
+                        <button string="Mark as Done" type="object" name="action_done" states="open" />
+                        <button string="Reset to Draft" type="object" name="action_draft" states="open,done" />
+                        <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Layanan surat Name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sr_nik" />
+                                <field name="sr_tmp_lahir" />
+                                <field name="sr_tgl_lahir" />
+                                <field name="sr_agama" />
+                                <field name="sr_jenis_kel" />
+                                <field name="sr_pekerjaan" />
+                                <field name="sr_alamat" />
+                                <field name="sr_keperluan" />
+                                <field name="sr_note" />
+                                <field name="sr_ttd" />
+                            </group>
+                            <group>
+                                <field name="warga_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_cdn_layanan_surat_search" model="ir.ui.view">
+            <field name="name">cdn_layanan_surat</field>
+            <field name="model">cdn.layanan_surat</field>
+            <field name="arch" type="xml">
+                <search string="Layanan surat">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Sr nama" name="filter_by_sr_nik" domain="[('sr_nik','=','')]" />
+                    <filter string="Sr tmp lahir" name="filter_by_sr_tmp_lahir" domain="[('sr_tmp_lahir','=','')]" />
+                    <filter string="Sr tgl lahir" name="filter_by_sr_tgl_lahir" domain="[('sr_tgl_lahir','=','')]" />
+                    <filter string="Sr agama" name="filter_by_sr_agama" domain="[('sr_agama','=','')]" />
+                    <filter string="Sr jenis kel" name="filter_by_sr_jenis_kel" domain="[('sr_jenis_kel','=','')]" />
+                    <filter string="Sr pekerjaan" name="filter_by_sr_pekerjaan" domain="[('sr_pekerjaan','=','')]" />
+                    <filter string="Sr alamat" name="filter_by_sr_alamat" domain="[('sr_alamat','=','')]" />
+                    <filter string="Sr keperluan" name="filter_by_sr_keperluan" domain="[('sr_keperluan','=','')]" />
+                    <filter string="Sr note" name="filter_by_sr_note" domain="[('sr_note','=','')]" />
+                    <filter string="Sr ttd" name="filter_by_sr_ttd" domain="[('sr_ttd','=','')]" />
+                    <filter string="State" name="filter_by_state" domain="[('state','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="sr_nik" select="True"/>
+                    <field name="sr_tmp_lahir" select="True"/>
+                    <field name="sr_tgl_lahir" select="True"/>
+                    <field name="sr_agama" select="True"/>
+                    <field name="sr_jenis_kel" select="True"/>
+                    <field name="sr_pekerjaan" select="True"/>
+                    <field name="sr_alamat" select="True"/>
+                    <field name="sr_keperluan" select="True"/>
+                    <field name="sr_note" select="True"/>
+                    <field name="sr_ttd" select="True"/>
+                    <field name="state" select="True"/>
+                    <field name="warga_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Warga" domain="[]" name="group_by_warga_id" context="{'group_by':'warga_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_cdn_layanan_surat_kanban" model="ir.ui.view" >
+            <field name="name">cdn_layanan_surat</field>
+            <field name="model">cdn.layanan_surat</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="sr_nik" />
+                    <field name="sr_tmp_lahir" />
+                    <field name="sr_tgl_lahir" />
+                    <field name="sr_agama" />
+                    <field name="sr_jenis_kel" />
+                    <field name="sr_pekerjaan" />
+                    <field name="sr_alamat" />
+                    <field name="sr_keperluan" />
+                    <field name="sr_note" />
+                    <field name="sr_ttd" />
+                    <field name="state" />
+                    <field name="warga_id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <ul>
+
+                                        <li>
+                                            <span class="text-muted">Warga</span> <field name="warga_id"></field>
+                                        </li>
+
+                                        <li>
+                                            <span class="text-muted">Sr tgl lahir</span> <field name="sr_tgl_lahir"></field>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <record id="view_cdn_layanan_surat_cal" model="ir.ui.view">
+            <field name="name">cdn_layanan_surat_cal</field>
+            <field name="model">cdn.layanan_surat</field>
+            <field name="arch" type="xml">
+                <calendar string="Layanan surat" date_start="sr_tgl_lahir">
+                    <field name="name" />
+                </calendar>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_cdn_layanan_surat_graph" model="ir.ui.view">
+            <field name="name">cdn_layanan_surat</field>
+            <field name="model">cdn.layanan_surat</field>
+            <field name="arch" type="xml">
+                <graph string="Layanan surat" type="bar">
+                    <field name="warga_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_cdn_layanan_surat" model="ir.actions.act_window">
+            <field name="name">Layanan surat</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cdn.layanan_surat</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Layanan surat
+                </p><p>
+                Click the Create button to add a new Layanan surat
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_aktivitas_surat" name="Layanan surat" parent="simpeldes_surat_operation" action="action_cdn_layanan_surat" sequence="10"/>
+        <menuitem id="menu_config_surat" name="Setting Surat" parent="simpeldes_surat_config" action="action_cdn_layanan_surat" sequence="10"/>
+    </data>
+</odoo>

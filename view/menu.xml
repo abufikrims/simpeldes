@@ -1,7 +1,14 @@
 <odoo>
 	<data>
+		<!-- Menu Kependudukan -->
 		<menuitem id="simpeldes_top_menu" name="Kependudukan" sequence="20" web_icon="simpeldes,static/description/icon_people.png" />
 		<menuitem id="simpeldes_warga" name="Data Warga" sequence="40" parent="simpeldes_top_menu" />
 		<menuitem id="simpeldes_config_menu" name="Pengaturan" sequence="50" parent="simpeldes_top_menu" />
+
+		<!-- Menu Persuratan -->
+		<menuitem id="simpeldes_persuratan" name="Persuratan" sequence="30" web_icon="simpeldes,static/description/icon_letter.png" />
+		<menuitem id="simpeldes_surat_operation" name="Aktivitas" sequence="10" parent="simpeldes_persuratan" />
+		<menuitem id="simpeldes_surat_config" name="Pengaturan" sequence="20" parent="simpeldes_persuratan" />
+
 	</data>
 </odoo>

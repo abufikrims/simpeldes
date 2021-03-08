@@ -34,6 +34,7 @@ Information
 		"view/suku.xml",
 		"view/hobi.xml",
 		"view/lahan_warga.xml",
+		"view/layanan_surat.xml",
 		"view/ref_data.xml",
 		"report/warga.xml",
 		"report/pendidikan.xml",
