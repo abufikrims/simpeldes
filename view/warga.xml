@@ -305,6 +305,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_cdn_warga" name="Warga" parent="simpeldes_config_menu" action="action_cdn_warga" sequence="20"/>
+        <menuitem id="menu_cdn_warga" name="Warga" parent="simpeldes_warga" action="action_cdn_warga" sequence="20"/>
     </data>
 </odoo>

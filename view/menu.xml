@@ -1,7 +1,7 @@
 <odoo>
 	<data>
 		<menuitem id="simpeldes_top_menu" name="Kependudukan" sequence="20" web_icon="simpeldes,static/description/icon_people.png" />
-		<menuitem id="simpeldes_sub_menu" name="Operations" sequence="40" parent="simpeldes_top_menu" />
-		<menuitem id="simpeldes_config_menu" name="Configurations" sequence="50" parent="simpeldes_top_menu" />
+		<menuitem id="simpeldes_warga" name="Data Warga" sequence="40" parent="simpeldes_top_menu" />
+		<menuitem id="simpeldes_config_menu" name="Pengaturan" sequence="50" parent="simpeldes_top_menu" />
 	</data>
 </odoo>

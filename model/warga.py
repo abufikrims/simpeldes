@@ -24,8 +24,8 @@ class warga(models.Model):
     
     nik             = fields.Char( string="NIK", required=True,  help="Nomor Induk Keluarga sesuai KTP/KK")
     no_kk           = fields.Char( string="No Kartu Keluarga",  help="Nomor Kartu Keluarga")
-    status_keluarga = fields.Selection(selection=[('kepala keluarga','Kepala Keluarga'),('suami','Suami'),('istri','Istri'),('anak','Anak'),('menantu','Menantu'),('cucu','Cucu'),('lainnya','Lainnya')],  string="Status Keluarga",  help="")
-    jenis_kel       = fields.Selection(selection=[('pria','Pria'),('wanita','Wanita')],  string="Jenis Kelamin",  help="")
+    status_keluarga = fields.Selection(selection=[('kepala keluarga','Kepala Keluarga'),('suami','Suami'),('istri','Istri'),('anak','Anak'),('menantu','Menantu'),('cucu','Cucu'),('lainnya','Lainnya')],  string="Status Keluarga", required=True,  help="")
+    jenis_kel       = fields.Selection(selection=[('pria','Pria'),('wanita','Wanita')],  string="Jenis Kelamin", required=True, help="")
     tmp_lahir       = fields.Char( string="Tempat Lahir",  help="Isikan dengan kota tempat kelahiran")
     tgl_lahir       = fields.Date( string="Tanggal Lahir",  help="Isikan dengan tanggal kelahiran")
     agama           = fields.Selection([('islam', 'Islam'), ('katolik', 'Katolik'), ('protestan', 'Protestan'), ('hindu', 'Hindu'), ('budha', 'Budha'),('konghucu','KongHu Chu')], 'Agama', default='islam')
