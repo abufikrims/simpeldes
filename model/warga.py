@@ -28,7 +28,7 @@ class warga(models.Model):
     jenis_kel       = fields.Selection(selection=[('pria','Pria'),('wanita','Wanita')],  string="Jenis Kelamin", required=True, help="")
     tmp_lahir       = fields.Char( string="Tempat Lahir",  help="Isikan dengan kota tempat kelahiran")
     tgl_lahir       = fields.Date( string="Tanggal Lahir",  help="Isikan dengan tanggal kelahiran")
-    agama           = fields.Selection([('islam', 'Islam'), ('katolik', 'Katolik'), ('protestan', 'Protestan'), ('hindu', 'Hindu'), ('budha', 'Budha'),('konghucu','KongHu Chu')], 'Agama', default='islam')
+    agama           = fields.Selection([('islam', 'Islam'), ('katolik', 'Katolik'), ('protestan', 'Protestan'), ('hindu', 'Hindu'), ('budha', 'Budha'),('konghucu','KongHu Chu')], string='Agama')
     kewarganegaraan = fields.Selection(selection=[('wni','WNI'),('wna','WNA')],  string="Kewarganegaraan", default="wni", help="Kewarganegaraan")
     gol_darah       = fields.Selection(selection=[('A','A'),('B','B'),('AB','AB'),('O','O'),('A+','A+'),('B+','B+'),('AB+','AB+'),('O+','O+'),('Tidak Tahu','TIDAK TAHU')],  string="Golongan Darah",  help="Isikan dengan golongan darah atau TIDAK TAHU jika Anda belum pernah periksa")
     bisa_baca       = fields.Boolean( string="Bisa Membaca ?", default=True, help="")
