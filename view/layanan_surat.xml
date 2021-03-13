@@ -11,8 +11,11 @@
                 <tree string="Layanan surat">
                     <field name="name" />
                     <field name="sr_nik" />
+                    <field name="warga_id"/>
                     <field name="sr_tmp_lahir" />
                     <field name="sr_tgl_lahir" />
+                    <field name="sr_alamat"/>
+                    <field name="state" />
                 </tree>
             </field>
         </record>
@@ -23,7 +26,7 @@
             <field name="type">form</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <form string="Layanan surat">
+                <form string="Surat Keterangan Domisili">
                     <header>
                         <button string="Confirm" type="object" name="action_confirm" states="draft" />
                         <button string="Mark as Done" type="object" name="action_done" states="open" />
@@ -38,24 +41,27 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Layanan surat Name"/>
+                            <label for="name" class="oe_edit_only" string="Nomor Surat"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
-                            <group>
+                            <group string="Data Pemohon" col="4" colspan="4">
+                                <field name="warga_id" />
                                 <field name="sr_nik" />
+                                <!-- <field name="sr_nama"/> -->
                                 <field name="sr_tmp_lahir" />
                                 <field name="sr_tgl_lahir" />
                                 <field name="sr_agama" />
                                 <field name="sr_jenis_kel" />
-                                <field name="sr_pekerjaan" />
+                                <field name="sr_pekerjaan_id" />
+                            </group>
+                            <group string="Alamat Pemohon" col="2" colspan="4">
                                 <field name="sr_alamat" />
                                 <field name="sr_keperluan" />
                                 <field name="sr_note" />
-                                <field name="sr_ttd" />
                             </group>
                             <group>
-                                <field name="warga_id" />
+                                 <field name="sr_ttd" />
                             </group>
                         </group>
                         <notebook>
@@ -77,8 +83,6 @@
                     <filter string="Sr tgl lahir" name="filter_by_sr_tgl_lahir" domain="[('sr_tgl_lahir','=','')]" />
                     <filter string="Sr agama" name="filter_by_sr_agama" domain="[('sr_agama','=','')]" />
                     <filter string="Sr jenis kel" name="filter_by_sr_jenis_kel" domain="[('sr_jenis_kel','=','')]" />
-                    <filter string="Sr pekerjaan" name="filter_by_sr_pekerjaan" domain="[('sr_pekerjaan','=','')]" />
-                    <filter string="Sr alamat" name="filter_by_sr_alamat" domain="[('sr_alamat','=','')]" />
                     <filter string="Sr keperluan" name="filter_by_sr_keperluan" domain="[('sr_keperluan','=','')]" />
                     <filter string="Sr note" name="filter_by_sr_note" domain="[('sr_note','=','')]" />
                     <filter string="Sr ttd" name="filter_by_sr_ttd" domain="[('sr_ttd','=','')]" />
@@ -89,7 +93,6 @@
                     <field name="sr_tgl_lahir" select="True"/>
                     <field name="sr_agama" select="True"/>
                     <field name="sr_jenis_kel" select="True"/>
-                    <field name="sr_pekerjaan" select="True"/>
                     <field name="sr_alamat" select="True"/>
                     <field name="sr_keperluan" select="True"/>
                     <field name="sr_note" select="True"/>
@@ -115,7 +118,7 @@
                     <field name="sr_tgl_lahir" />
                     <field name="sr_agama" />
                     <field name="sr_jenis_kel" />
-                    <field name="sr_pekerjaan" />
+                    <field name="sr_pekerjaan_id" />
                     <field name="sr_alamat" />
                     <field name="sr_keperluan" />
                     <field name="sr_note" />
@@ -166,9 +169,15 @@
                 </graph>
             </field>
         </record>
+        <record id="seq_cdn_layanan_surat_new" model="ir.sequence">
+            <field name="name">No Referensi</field>
+            <field name="code">cdn.layanan_surat</field>
+            <field name="prefix">KP/%(y)s.%(month)s/</field>
+            <field name="padding">4</field>
+        </record>
         <!-- action window -->
         <record id="action_cdn_layanan_surat" model="ir.actions.act_window">
-            <field name="name">Layanan surat</field>
+            <field name="name">Surat Keterangan Domisili</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cdn.layanan_surat</field>
             <field name="view_mode">kanban,tree,form,calendar,graph</field>

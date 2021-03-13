@@ -11,7 +11,7 @@ class warga(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Tabel warga - inherits res.partner"
 
-    nama = fields.Char( required=True, string="Nama",  help="Nama Lengkap Warga")
+    nama = fields.Char(required=True, string="Nama", index=True,  help="Nama Lengkap Warga")
     partner_id = fields.Many2one("res.partner", string='Partner ID', required=True, ondelete="cascade")
     
     # Tambahan data alamat - untuk melengkapi res.partner (street, street2, city, state, zip)
@@ -22,7 +22,7 @@ class warga(models.Model):
     desa_id         = fields.Many2one(comodel_name='ref.desa', string='Desa/Kelurahan')
     
     
-    nik             = fields.Char( string="NIK", required=True,  help="Nomor Induk Keluarga sesuai KTP/KK")
+    nik             = fields.Char( string="NIK", required=True, index=True, help="Nomor Induk Keluarga sesuai KTP/KK")
     no_kk           = fields.Char( string="No Kartu Keluarga",  help="Nomor Kartu Keluarga")
     status_keluarga = fields.Selection(selection=[('kepala keluarga','Kepala Keluarga'),('suami','Suami'),('istri','Istri'),('anak','Anak'),('menantu','Menantu'),('cucu','Cucu'),('lainnya','Lainnya')],  string="Status Keluarga", required=True,  help="")
     jenis_kel       = fields.Selection(selection=[('pria','Pria'),('wanita','Wanita')],  string="Jenis Kelamin", required=True, help="")
@@ -58,8 +58,15 @@ class warga(models.Model):
     jenis_kb        = fields.Selection(string='Program KB', selection=[('iud', 'IUD'), ('pil', 'PIL KB'),('kondom', 'KONDOM'),('suntik', 'SUNTIK'),('implan', 'IMPLAN'),('tubektomi', 'TUBEKTOMI/VASEKTOMI'),('lainnya', 'LAINNYA'),])
     riwayat_sakit_ids   = fields.One2many(comodel_name='riwayat.sakit', inverse_name='warga_id', string='Riwayat Sakit')
     
-    
-
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=100):
+        args = args or []
+        recs = self.browse()
+        if name:
+            recs = self.search([('nik',operator, name)] + args, limit=limit)
+        if not recs:
+            recs = self.search([('name', operator, name)] + args, limit=limit)
+        return recs.name_get()
     
 
     @api.onchange('nama')
