@@ -36,6 +36,7 @@ Information
 		"view/lahan_warga.xml",
 		"view/layanan_surat.xml",
 		"view/ref_data.xml",
+		"view/ref_jenis_surat.xml",
 		"report/warga.xml",
 		"report/pendidikan.xml",
 		"report/pekerjaan.xml",

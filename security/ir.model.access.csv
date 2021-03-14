@@ -53,3 +53,6 @@ access_manager_riwayat_sakit,access_manager_riwayat_sakit,model_riwayat_sakit,si
 
 access_user_layanan_surat,access_user_layanan_surat,model_cdn_layanan_surat,simpeldes.group_simpeldes_user,1,0,0,0
 access_manager_layanan_surat,access_manager_layanan_surat,model_cdn_layanan_surat,simpeldes.group_simpeldes_manager,1,1,1,1
+
+access_user_jenis_surat,access_user_jenis_surat,model_ref_jenis_surat,simpeldes.group_simpeldes_user,1,0,0,0
+access_manager_jenis_surat,access_manager_jenis_surat,model_ref_jenis_surat,simpeldes.group_simpeldes_manager,1,1,1,1

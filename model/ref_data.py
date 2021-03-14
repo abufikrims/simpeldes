@@ -72,4 +72,13 @@ class ref_penyakit(models.Model):
     keterangan      = fields.Char( string="Keterangan",  help="")
     active          = fields.Boolean( string="Active", default=True,  help="")
 
+class ref_jenis_surat(models.Model):
+    _name           = "ref.jenis_surat"
+    _description    = "Referensi Jenis Surat"
+
+    name            = fields.Char( required=True, string="Jenis Surat",  help="")
+    kategori        = fields.Selection(string='Kategori', selection=[('internal', 'Internal'), ('layanan', 'Layanan Masyarakat'),])
+    
+    keterangan      = fields.Char( string="Keterangan",  help="")
+    active          = fields.Boolean( string="Active", default=True,  help="")
 

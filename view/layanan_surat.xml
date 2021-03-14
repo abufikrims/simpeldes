@@ -194,6 +194,6 @@
         </record>
 
         <menuitem id="menu_aktivitas_surat" name="Layanan surat" parent="simpeldes_surat_operation" action="action_cdn_layanan_surat" sequence="10"/>
-        <menuitem id="menu_config_surat" name="Setting Surat" parent="simpeldes_surat_config" action="action_cdn_layanan_surat" sequence="10"/>
+        
     </data>
 </odoo>

@@ -600,5 +600,7 @@
         <menuitem id="menu_cdn_ref_kota" name="Ref Kabupaten/Kota" parent="menu_cdn_ref_data" action="action_ref_kota" sequence="20"/>
         <menuitem id="menu_cdn_ref_kecamatan" name="Ref Kecamatan" parent="menu_cdn_ref_data" action="action_ref_kecamatan" sequence="30"/>
         <menuitem id="menu_cdn_ref_desa" name="Ref Desa/Kelurahan" parent="menu_cdn_ref_data" action="action_ref_desa" sequence="40"/>
+       
+        
     </data>
 </odoo>
