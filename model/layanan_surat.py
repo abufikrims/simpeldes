@@ -1,4 +1,4 @@
-STATES = [('draft','Draft'),('confirm','Confirm'),('done','Done')]
+STATES = [('draft','Pengajuan'),('diperiksa','Diperiksa'),('disetujui','Disetujui'),('selesai','Selesai')]
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, Warning
 
@@ -8,7 +8,7 @@ class layanan_surat(models.Model):
     _description    = "Template Model untuk Layanan Surat - di inherits berdasarkan jenis suratnya"
 
     name            = fields.Char( required=True, default="New", readonly=True,  string="Nomor Pengajuan",  help="")
-    #sr_no_surat     = fields.Char( string="No Surat",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
+    sr_no_surat     = fields.Char( string="No Surat",   index=True,   help="")
     sr_nik          = fields.Char( string="NIK Pemohon",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
     #sr_nama         = fields.Char( string="Nama Pemohon",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
     sr_tmp_lahir    = fields.Char( string="Tempat Lahir",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
@@ -31,19 +31,23 @@ class layanan_surat(models.Model):
             vals["name"] = self.env["ir.sequence"].next_by_code("cdn.layanan_surat") or "Error Number!!!"
         return super(layanan_surat, self).create(vals)
 
-    def action_confirm(self):
+    def action_diperiksa(self):
         self.state = STATES[1][0]
 
-    def action_done(self):
+    def action_disetujui(self):
         self.state = STATES[2][0]
+    
+    def action_selesai(self):
+        self.state = STATES[3][0]
+
 
     def action_draft(self):
         self.state = STATES[0][0]
 
     def unlink(self):
-        for me_id in self :
-            if me_id.state != STATES[0][0]:
-                raise UserError("Cannot delete non draft record!")
+        # for me_id in self :
+        #     if me_id.state != STATES[0][0]:
+        #         raise UserError("Cannot delete non draft record!")
         return super(layanan_surat, self).unlink()
 
     @api.onchange('warga_id')
