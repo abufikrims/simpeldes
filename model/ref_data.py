@@ -77,8 +77,9 @@ class ref_jenis_surat(models.Model):
     _description    = "Referensi Jenis Surat"
 
     name            = fields.Char( required=True, string="Jenis Surat",  help="")
-    kategori        = fields.Selection(string='Kategori', selection=[('internal', 'Internal'), ('layanan', 'Layanan Masyarakat'),])
+    kategori        = fields.Selection(string='Kategori', selection=[('internal', 'Internal'), ('layanan', 'Layanan Masyarakat'),], required=True)
+    jns_pemohon     = fields.Selection(string='Pemohon', selection=[('warga', 'Warga'), ('nonwarga', 'Non Warga'),], required=True)
     
-    keterangan      = fields.Char( string="Keterangan",  help="")
+    keterangan      = fields.Text( string="Keterangan",  help="")
     active          = fields.Boolean( string="Active", default=True,  help="")
 

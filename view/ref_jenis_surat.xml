@@ -12,6 +12,7 @@
             <field name="arch" type="xml">
                 <tree string="Jenis Surat">
                     <field name="name" />
+                    <field name="jns_pemohon"/>
                     <field name="kategori" />
                     <field name="keterangan" />
                 </tree>
@@ -40,7 +41,8 @@
                         </div>
                         <group>
                             <group>
-                                <field name="kategori" />
+                                <field name="jns_pemohon" />
+                                <field name="kategori"/>
                                 <field name="keterangan" />
                             </group>
                         </group>
@@ -59,6 +61,7 @@
                     <field name="name" select="True"/>
                     <group string="Group By..">
                         <filter string="Kategori" domain="[]" name="group_by_kategori" context="{'group_by':'kategori'}"/>
+                        <filter string="Jenis Pemohon" domain="[]" name="group_by_pemohon" context="{'group_by':'jns_pemohon'}"/>
                     </group>
                 </search>
             </field>
